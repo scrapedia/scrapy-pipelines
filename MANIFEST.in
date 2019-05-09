@@ -1,0 +1,2 @@
+include versioneer.py
+include scrapy_pipelines/_version.py
