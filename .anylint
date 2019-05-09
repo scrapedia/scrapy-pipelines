@@ -1,5 +1,6 @@
 {
    "ignore":[
-      "scrapy_pipelines/_version.py"
+      "scrapy_pipelines/_version.py",
+      "versioneer.py"
    ]
 }
