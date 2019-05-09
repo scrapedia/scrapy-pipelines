@@ -1,0 +1,5 @@
+{
+   "ignore":[
+      "scrapy_pipelines/_version.py"
+   ]
+}
