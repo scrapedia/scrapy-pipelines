@@ -26,6 +26,16 @@ Requirements
 Installation
 ============
 
+.. image:: https://img.shields.io/pypi/v/scrapy-pipelines.svg
+   :target: https://pypi.python.org/pypi/scrapy-pipelines
+   :alt: PyPI
+.. image:: https://img.shields.io/pypi/pyversions/scrapy-pipelines.svg
+   :target: https://pypi.python.org/pypi/scrapy-pipelines
+   :alt: PyPI - Python Version
+.. image:: https://img.shields.io/pypi/wheel/scrapy-pipelines.svg
+   :target: https://pypi.python.org/pypi/scrapy-pipelines
+   :alt: PyPI - Wheel
+
 Documentation
 =============
 
