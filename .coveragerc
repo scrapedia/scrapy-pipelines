@@ -1,0 +1,3 @@
+[run]
+omit =
+    scrapy_pipelines/_version.py
