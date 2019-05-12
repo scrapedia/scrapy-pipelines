@@ -1,10 +1,14 @@
+import logging
 from contextlib import contextmanager
+from typing import Generator
 
 from scrapy.settings import Settings
 
+LOGGER = logging.getLogger(__name__)
+
 
 @contextmanager
-def unfreeze_settings(settings: Settings):
+def unfreeze_settings(settings: Settings) -> Generator[Settings, None, None]:
     """
 
     :param settings:
@@ -16,5 +20,7 @@ def unfreeze_settings(settings: Settings):
     settings.frozen = False
     try:
         yield settings
+    except Exception as err:
+        LOGGER.error(err, exc_info=True)
     finally:
         settings.frozen = original_status

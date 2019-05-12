@@ -8,8 +8,10 @@ from abc import ABC, abstractmethod
 
 from scrapy.crawler import Crawler
 from scrapy.item import Item
-from scrapy.settings import Settings
+from scrapy.settings import SETTINGS_PRIORITIES, Settings
 from scrapy.spiders import Spider
+
+from scrapy_pipelines.settings import default_settings, unfreeze_settings
 
 LOGGER = logging.getLogger(__name__)
 
@@ -34,6 +36,10 @@ class ItemPipeline(ABC):
         :param crawler:
         :return:
         """
+        with unfreeze_settings(crawler.settings) as settings:
+            settings.setmodule(
+                module=default_settings, priority=SETTINGS_PRIORITIES["default"]
+            )
         try:
             pipe = cls.from_settings(crawler.settings)
         except AttributeError:
