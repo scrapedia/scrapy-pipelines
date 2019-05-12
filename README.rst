@@ -5,6 +5,10 @@ Scrapy-Pipelines
 Overview
 ========
 
+.. image:: https://img.shields.io/travis/scrapedia/scrapy-pipelines/master.svg
+   :target: http://travis-ci.org/scrapedia/scrapy-pipelines
+   :alt: Travis branch
+   
 .. image:: https://codecov.io/gh/scrapedia/scrapy-pipelines/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/scrapedia/scrapy-pipelines
    :alt: Coverage Report
