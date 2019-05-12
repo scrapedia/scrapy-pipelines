@@ -1,9 +1,18 @@
 from contextlib import contextmanager
 
+from scrapy.settings import Settings
+
 
 @contextmanager
-def unfreeze_settings(settings):
-    original_status = settings.frozen
+def unfreeze_settings(settings: Settings):
+    """
+
+    :param settings:
+    :type settings:
+    :return:
+    :rtype:
+    """
+    original_status: bool = settings.frozen
     settings.frozen = False
     try:
         yield settings
