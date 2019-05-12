@@ -3,7 +3,7 @@ MongoDB Async Item Pipeline
 """
 import inspect
 import logging
-from typing import Callable, Dict, List
+from typing import Callable, Dict, Tuple
 
 from pymongo.errors import OperationFailure
 from scrapy.item import Item
@@ -19,16 +19,16 @@ from scrapy_pipelines.pipelines import ItemPipeline
 LOGGER = logging.getLogger(__name__)
 
 
-def get_args(func: Callable) -> List[str]:
+def get_args(func: Callable) -> Tuple[str]:
     """
 
     :param func:
-    :type func:
+    :type func: callable
     :return:
-    :rtype:
+    :rtype: tuple
     """
     sig = inspect.signature(obj=func)
-    return sig.parameters.keys()
+    return tuple(sig.parameters.keys())
 
 
 class MongoPipeline(ItemPipeline):
