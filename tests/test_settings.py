@@ -11,12 +11,13 @@ class TestSettings(TestCase):
         self.settings = Settings()
         self.settings.freeze()
 
-    def test_unfreeze_settings(self):
+    def test_unfreeze_settings_succeed(self):
         self.assertEqual(self.settings.frozen, True)
         with unfreeze_settings(self.settings) as settings:
             self.assertEqual(self.settings.frozen, False)
         self.assertEqual(self.settings.frozen, True)
 
+    def test_unfreeze_settings_failed(self):
         with self.assertRaises(Exception), self.assertLogs(
             logger=LOGGER, level=logging.ERROR
         ):
