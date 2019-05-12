@@ -22,5 +22,6 @@ def unfreeze_settings(settings: Settings) -> Generator[Settings, None, None]:
         yield settings
     except Exception as err:
         LOGGER.error(err, exc_info=True)
+        raise err
     finally:
         settings.frozen = original_status
