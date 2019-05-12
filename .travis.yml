@@ -13,7 +13,7 @@ matrix:
     env: TOXENV=py37
     dist: xenial
 install:
-- pip install -U tox
+- pip install -U tox twine wheel codecov
 script: tox
 after_success:
   - codecov
