@@ -133,7 +133,7 @@ class MongoPipeline(ItemPipeline):
         yield self.mongo.disconnect()
 
     @inlineCallbacks
-    def process_item(self, item: Item, spider: Spider):
+    def process_item(self, item: Item, spider: Spider) -> Item:
         """
 
         :param item:
