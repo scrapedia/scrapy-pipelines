@@ -1,0 +1,5 @@
+coverage:
+  notify:
+    slack:
+      default:
+        url: "https://hooks.slack.com/services/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"
