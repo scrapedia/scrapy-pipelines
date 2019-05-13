@@ -16,6 +16,8 @@ matrix:
     dist: xenial
 install:
 - pip install -U tox twine wheel codecov
+before_script:
+  - mongo test_db --eval 'db.createUser({user:"test_username",pwd:"test_password",roles:["readWrite"]});'
 script: tox
 after_success:
 - codecov
