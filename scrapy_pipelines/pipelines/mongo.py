@@ -33,7 +33,7 @@ def get_args(func: Callable) -> Tuple[str]:
 
 class MongoPipeline(ItemPipeline):
     """
-
+    A pipeline saved into MongoDB asynchronously with txmongo
     """
 
     def __init__(self, uri: str, settings: Settings):
@@ -102,10 +102,10 @@ class MongoPipeline(ItemPipeline):
             database_name=self.settings.get("PIPELINE_MONGO_DATABASE"),
         )
         if all(
-            (
-                self.settings.get("PIPELINE_MONGO_USERNAME"),
-                self.settings.get("PIPELINE_MONGO_PASSWORD"),
-            )
+                (
+                    self.settings.get("PIPELINE_MONGO_USERNAME"),
+                    self.settings.get("PIPELINE_MONGO_PASSWORD"),
+                )
         ):
             yield self._get_callable(
                 self.database.authenticate,
