@@ -48,8 +48,7 @@ Releases
 
 TODO
 ====
-
-* Add indexes creation in open_spider()
-* Add signals for MongoDB document's id return
-* Add MongoDB document update
-* Add item_completed method
+* [ ] Add indexes creation in open_spider()
+* [ ] Add signals for MongoDB document's id return
+* [ ] Add MongoDB document update
+* [ ] Add item_completed method
