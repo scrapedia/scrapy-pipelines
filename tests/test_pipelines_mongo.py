@@ -77,7 +77,7 @@ class TestMongoPipeline(TestCase):
                 "v": 2,
             },
         }
-        index_info = yield self.pipe.coll.index_information()
+        index_info = yield self.pipe.collection.index_information()
         self.assertDictEqual(index_info, _index_info)
 
     @inlineCallbacks
