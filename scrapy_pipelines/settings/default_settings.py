@@ -34,3 +34,11 @@ PIPELINE_MONGO_COLLECTION = "scrapy_project_collection"
 # PIPELINE_MONGO_INDEXES = "INDEXES"
 
 # PIPELINE_MONGO_PROCESS_ITEM = "PROCESS_ITEM"
+
+# from txmongo.filter import ASCENDING, DESCENDING
+#
+# PIPELINE_MONGO_INDEXES = [
+#     ("key_asc", ASCENDING, {"name": "index_key_asc"}),
+#     ("key_des", DESCENDING, {"name": "index_key_des"}),
+#     ("key_unique", DESCENDING, {"name": "index_key_unique", "unique": True}),
+# ]

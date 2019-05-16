@@ -13,6 +13,7 @@ from twisted.internet.defer import inlineCallbacks
 from txmongo.collection import Collection
 from txmongo.connection import ConnectionPool
 from txmongo.database import Database
+from txmongo.filter import sort as txsort
 
 from scrapy_pipelines.pipelines import ItemPipeline
 
@@ -122,6 +123,7 @@ class MongoPipeline(ItemPipeline):
                 database=self.database,
                 name=self.settings.get("PIPELINE_MONGO_COLLECTION"),
             )
+            yield self.create_indexes(spider=spider)
 
     @inlineCallbacks
     def close_spider(self, spider: Spider):
@@ -131,6 +133,24 @@ class MongoPipeline(ItemPipeline):
         :return:
         """
         yield self.mongo.disconnect()
+
+    @inlineCallbacks
+    def create_indexes(self, spider: Spider):
+        """
+
+        :param spider:
+        :type spider:
+        :return:
+        :rtype:
+        """
+        indexes = self.settings.get("PIPELINE_MONGO_INDEXES", list())
+        for field, _order, *args in indexes:
+            sort_fields = txsort(_order(field))
+            try:
+                kwargs = args[0]
+            except IndexError:
+                kwargs = {}
+            _ = yield self.collection.create_index(sort_fields, **kwargs)
 
     @inlineCallbacks
     def process_item(self, item: Item, spider: Spider) -> Item:
