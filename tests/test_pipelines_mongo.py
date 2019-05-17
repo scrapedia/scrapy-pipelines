@@ -75,7 +75,7 @@ class TestMongoPipeline(TestCase):
                 "key": SON([("test", 1)]),
                 "name": "test_1",
                 "ns": "test_db.test_coll",
-                "v": 2
+                "v": 2,
             },
             "index_test_asc": {
                 "key": SON([("test_asc", 1)]),
@@ -93,7 +93,7 @@ class TestMongoPipeline(TestCase):
                 "key": SON([("test_unique", -1)]),
                 "name": "index_test_unique",
                 "ns": "test_db.test_coll",
-                'partialFilterExpression': {'test_unique': {'$exists': True}},
+                "partialFilterExpression": {"test_unique": {"$exists": True}},
                 "unique": True,
                 "v": 2,
             },
