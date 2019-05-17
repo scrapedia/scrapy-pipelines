@@ -100,3 +100,8 @@ class TestMongoPipeline(TestCase):
         result = yield self.pipe.process_item(item=item, spider=self.spider)
 
         self.assertDictEqual(dict(result), dict(item))
+
+    def test_item_completed(self):
+        _item = TestItem({"a": 2, "b": 3})
+        item = self.pipe.item_completed(None, _item, None)
+        self.assertDictEqual(dict(_item), dict(item))

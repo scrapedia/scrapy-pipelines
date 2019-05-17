@@ -160,5 +160,11 @@ class MongoPipeline(ItemPipeline):
         :param spider:
         :return:
         """
-        yield self.collection.insert_one(document=dict(item))
+        result = yield self.collection.insert_one(document=dict(item))
+
+        _item = self.item_completed(result, item, spider)
+
+        return _item
+
+    def item_completed(self, result, item: Item, spider: Spider) -> Item:
         return item
