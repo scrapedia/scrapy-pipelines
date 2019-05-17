@@ -1,4 +1,5 @@
 from bson.son import SON
+from pymongo.results import InsertOneResult
 from scrapy import Spider
 from scrapy.item import Field, Item
 from scrapy.settings import Settings
@@ -112,3 +113,10 @@ class TestMongoPipeline(TestCase):
         _item = TestItem({"a": 2, "b": 3})
         item = self.pipe.item_completed(None, _item, None)
         self.assertDictEqual(dict(_item), dict(item))
+
+    @inlineCallbacks
+    def test_process_item_id(self):
+        item = TestItem({"a": 4, "b": 5})
+        result = yield self.pipe.process_item_id(item=item, spider=self.spider)
+
+        self.assertIsInstance(result, InsertOneResult)

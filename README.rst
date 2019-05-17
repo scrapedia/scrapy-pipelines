@@ -55,5 +55,5 @@ TODO
 
 * [X] Add indexes creation in open_spider()
 * [X] Add item_completed method
-* [ ] Add signals for MongoDB document's id return
+* [X] Add signals for MongoDB document's id return
 * [ ] Add MongoDB document update

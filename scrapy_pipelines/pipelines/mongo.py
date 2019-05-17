@@ -6,6 +6,8 @@ import logging
 from typing import Callable, Dict, Tuple
 
 from pymongo.errors import OperationFailure
+from pymongo.results import InsertOneResult
+from scrapy.crawler import Crawler
 from scrapy.item import Item
 from scrapy.settings import Settings
 from scrapy.spiders import Spider
@@ -16,6 +18,7 @@ from txmongo.database import Database
 from txmongo.filter import sort as txsort
 
 from scrapy_pipelines.pipelines import ItemPipeline
+from scrapy_pipelines.signals import item_id
 
 LOGGER = logging.getLogger(__name__)
 
@@ -52,6 +55,12 @@ class MongoPipeline(ItemPipeline):
         self.mongo: ConnectionPool = None
         self.database: Database = None
         self.collection: Collection = None
+
+    @classmethod
+    def from_crawler(cls, crawler: Crawler):
+        pipe = super().from_crawler(crawler=crawler)
+        crawler.signals.connect(receiver=pipe.process_item_id, signal=item_id)
+        return pipe
 
     @classmethod
     def from_settings(cls, settings: Settings):
@@ -167,4 +176,23 @@ class MongoPipeline(ItemPipeline):
         return _item
 
     def item_completed(self, result, item: Item, spider: Spider) -> Item:
+        """
+
+        :param result:
+        :param item:
+        :param spider:
+        :return:
+        """
         return item
+
+    @inlineCallbacks
+    def process_item_id(self, item: Item, spider: Spider) -> InsertOneResult:
+        """
+
+        :param item:
+        :param spider:
+        :return:
+        """
+        result = yield self.collection.insert_one(document=dict(item))
+
+        return result
