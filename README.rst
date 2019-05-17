@@ -23,6 +23,10 @@ Overview
 .. image:: https://api.codacy.com/project/badge/Grade/aeda92e058434a9eb2e8b0512a02235f
    :target: https://www.codacy.com/app/grammy-jiang/scrapy-pipelines?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=scrapedia/scrapy-pipelines&amp;utm_campaign=Badge_Grade
 
+.. image:: https://pyup.io/repos/github/scrapedia/scrapy-pipelines/shield.svg
+     :target: https://pyup.io/repos/github/scrapedia/scrapy-pipelines/
+     :alt: Updates
+
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
     :target: https://github.com/python/black
     :alt: Code style: black
