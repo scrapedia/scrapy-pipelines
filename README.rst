@@ -5,7 +5,7 @@ Scrapy-Pipelines
 Overview
 ========
 
-.. image:: https://mperlet.github.io/pybadge/badges/9.57.svg
+.. image:: https://mperlet.github.io/pybadge/badges/9.37.svg
    :alt: pylint Score
 
 .. image:: https://img.shields.io/travis/scrapedia/scrapy-pipelines/master.svg
