@@ -186,7 +186,9 @@ class MongoPipeline(ItemPipeline):
         return item
 
     @inlineCallbacks
-    def process_item_id(self, item: Item, spider: Spider) -> InsertOneResult:
+    def process_item_id(
+            self, signal, sender, item: Item, spider: Spider
+    ) -> InsertOneResult:
         """
 
         :param item:

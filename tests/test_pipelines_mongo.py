@@ -117,6 +117,8 @@ class TestMongoPipeline(TestCase):
     @inlineCallbacks
     def test_process_item_id(self):
         item = TestItem({"a": 4, "b": 5})
-        result = yield self.pipe.process_item_id(item=item, spider=self.spider)
+        result = yield self.pipe.process_item_id(
+            signal=object(), sender=None, item=item, spider=self.spider
+        )
 
         self.assertIsInstance(result, InsertOneResult)
