@@ -7,7 +7,7 @@ Overview
 
 .. image:: https://mperlet.github.io/pybadge/badges/9.57.svg
    :alt: pylint Score
-   
+
 .. image:: https://img.shields.io/travis/scrapedia/scrapy-pipelines/master.svg
    :target: http://travis-ci.org/scrapedia/scrapy-pipelines
    :alt: Travis branch
