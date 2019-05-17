@@ -1,2 +1,2 @@
-txmongo
-scrapy
+txmongo==19.1.0
+scrapy==1.6.0
