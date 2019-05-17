@@ -27,6 +27,9 @@ Overview
      :target: https://pyup.io/repos/github/scrapedia/scrapy-pipelines/
      :alt: Updates
 
+.. image:: https://snyk.io/test/github/scrapedia/scrapy-pipelines/badge.svg
+    :target: https://snyk.io/test/github/scrapedia/scrapy-pipelines
+    :alt: Known Vulnerabilities
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
     :target: https://github.com/python/black
     :alt: Code style: black
