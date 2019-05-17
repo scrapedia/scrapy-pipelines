@@ -34,6 +34,7 @@ class TestMongoPipeline(TestCase):
         "PIPELINE_MONGO_PASSWORD": "test_password",
         "PIPELINE_MONGO_COLLECTION": "test_coll",
         "PIPELINE_MONGO_INDEXES": [
+            ("test", ASCENDING),
             ("test_asc", ASCENDING, {"name": "index_test_asc"}),
             ("test_des", DESCENDING, {"name": "index_test_des"}),
             (
@@ -69,6 +70,12 @@ class TestMongoPipeline(TestCase):
                 "name": "_id_",
                 "ns": "test_db.test_coll",
                 "v": 2,
+            },
+            "test_1": {
+                "key": SON([("test", 1)]),
+                "name": "test_1",
+                "ns": "test_db.test_coll",
+                "v": 2
             },
             "index_test_asc": {
                 "key": SON([("test_asc", 1)]),
