@@ -10,6 +10,11 @@ from scrapy_pipelines.pipelines.mongo import MongoPipeline, get_args
 from scrapy_pipelines.settings import default_settings
 
 
+class TestItem(Item):
+    a = Field()
+    b = Field()
+
+
 class TestGetArgs(TestCase):
     def test_get_args(self):
         def test_func(a, b, c):
@@ -31,7 +36,15 @@ class TestMongoPipeline(TestCase):
         "PIPELINE_MONGO_INDEXES": [
             ("test_asc", ASCENDING, {"name": "index_test_asc"}),
             ("test_des", DESCENDING, {"name": "index_test_des"}),
-            ("test_unique", DESCENDING, {"name": "index_test_unique", "unique": True}),
+            (
+                "test_unique",
+                DESCENDING,
+                {
+                    "name": "index_test_unique",
+                    "unique": True,
+                    "partialFilterExpression": {"test_unique": {"$exists": True}},
+                },
+            ),
         ],
     }
 
@@ -73,6 +86,7 @@ class TestMongoPipeline(TestCase):
                 "key": SON([("test_unique", -1)]),
                 "name": "index_test_unique",
                 "ns": "test_db.test_coll",
+                'partialFilterExpression': {'test_unique': {'$exists': True}},
                 "unique": True,
                 "v": 2,
             },
@@ -82,11 +96,7 @@ class TestMongoPipeline(TestCase):
 
     @inlineCallbacks
     def test_process_item(self):
-        class TestItem(Item):
-            a = Field()
-            b = Field()
-
         item = TestItem({"a": 0, "b": 1})
         result = yield self.pipe.process_item(item=item, spider=self.spider)
 
-        self.assertDictEqual({"a": 0, "b": 1}, dict(result))
+        self.assertDictEqual(dict(result), dict(item))
