@@ -16,6 +16,10 @@ Overview
    :target: https://codecov.io/gh/scrapedia/scrapy-pipelines
    :alt: Coverage Report
 
+.. image:: https://codebeat.co/badges/fabc61ba-6a20-4bd1-bf73-a2f091a9ad80
+   :target: https://codebeat.co/projects/github-com-scrapedia-scrapy-pipelines-master
+   :alt: codebeat badge
+
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
     :target: https://github.com/python/black
     :alt: Code style: black
