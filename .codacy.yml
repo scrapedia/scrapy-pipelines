@@ -1,0 +1,4 @@
+exclude_paths:
+  - '.github/**'
+  - 'scrapy_pipelines/_version.py'
+  - 'versioneer.py'
