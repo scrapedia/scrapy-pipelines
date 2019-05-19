@@ -5,6 +5,10 @@ Scrapy-Pipelines
 Overview
 ========
 
+.. image:: https://bestpractices.coreinfrastructure.org/projects/2828/badge
+   :alt: CII Best Practices
+   :target: https://bestpractices.coreinfrastructure.org/projects/2828
+
 .. image:: https://mperlet.github.io/pybadge/badges/9.37.svg
    :alt: pylint Score
 
