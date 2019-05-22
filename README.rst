@@ -42,12 +42,22 @@ Overview
     :target: https://www.gnu.org/licenses/gpl-3.0
     :alt: License: AGPL v3
     
+These pipelines enable Scrapy to save items into various backends, including:
+
+ * MongoDB
+
+And also these pipelines provide multiple ways to save or update the items, and
+return the id created by backends
+
 Requirements
 =============
 
 .. image:: https://pyup.io/repos/github/scrapedia/r18/python-3-shield.svg
    :target: https://pyup.io/repos/github/scrapedia/r18/
    :alt: Python 3
+
+* Python 2.7 or Python 3.4+
+* Works on Linux, Windows, Mac OSX, BSD
 
 Installation
 ============
@@ -62,11 +72,57 @@ Installation
    :target: https://pypi.python.org/pypi/scrapy-pipelines
    :alt: PyPI - Wheel
 
+The quick way:
+::
+    pip install scrapy-pipelines
+
+For more details see the installation section in the documentation:
+https://scrapy-pipelines.readthedocs.io/en/latest/intro/installation.html
+
 Documentation
 =============
 
-Releases
-========
+Documentation is available online at
+https://scrapy-pipelines.readthedocs.io/en/latest/ and in the docs directory.
+
+Community (blog, twitter, mail list, IRC)
+=========================================
+
+*Keeping this section same as Scrapy is intending to benefit back to Scrapy.*
+
+See https://scrapy.org/community/
+
+Contributing
+============
+
+*Keeping this section same as Scrapy is intending to be easier when this repo
+merge back to Scrapy.*
+
+See https://doc.scrapy.org/en/master/contributing.html
+
+Code of Conduct
+---------------
+
+Please note that this project is released with a Contributor Code of Conduct
+(see https://github.com/scrapy/scrapy/blob/master/CODE_OF_CONDUCT.md).
+
+By participating in this project you agree to abide by its terms.
+Please report unacceptable behavior to opensource@scrapinghub.com.
+
+
+Companies using Scrapy
+======================
+
+*Keeping this section same as Scrapy is intending to benefit back to Scrapy.*
+
+See https://scrapy.org/companies/
+
+Commercial Support
+==================
+
+*Keeping this section same as Scrapy is intending to benefit back to Scrapy.*
+
+See https://scrapy.org/support/
 
 TODO
 ====
