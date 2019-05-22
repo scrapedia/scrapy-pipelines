@@ -44,10 +44,10 @@ Overview
     
 These pipelines enable Scrapy to save items into various backends, including:
 
- * MongoDB
+* MongoDB
 
 And also these pipelines provide multiple ways to save or update the items, and
-return the id created by backends
+return id created by backends
 
 Requirements
 =============
@@ -56,8 +56,8 @@ Requirements
    :target: https://pyup.io/repos/github/scrapedia/r18/
    :alt: Python 3
 
-* Python 2.7 or Python 3.4+
-* Works on Linux, Windows, Mac OSX, BSD
+* Python 3.6+
+* Works on Linux, Windows, Mac OSX
 
 Installation
 ============
