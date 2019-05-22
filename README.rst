@@ -73,8 +73,8 @@ Installation
    :alt: PyPI - Wheel
 
 The quick way:
-::
-    pip install scrapy-pipelines
+
+   pip install scrapy-pipelines
 
 For more details see the installation section in the documentation:
 https://scrapy-pipelines.readthedocs.io/en/latest/intro/installation.html
