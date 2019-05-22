@@ -1,3 +1,6 @@
+"""
+Test MongoPipeline
+"""
 from bson.son import SON
 from pymongo.results import InsertOneResult
 from scrapy import Spider
@@ -12,21 +15,38 @@ from scrapy_pipelines.settings import default_settings
 
 
 class TestItem(Item):
+    """
+    A item class just for test purpose
+    """
+
     a = Field()
     b = Field()
 
 
 class TestGetArgs(TestCase):
+    """
+    Test the functions in MongoPipeline
+    """
+
     def test_get_args(self):
-        def test_func(a, b, c):
-            pass
+        """
+
+        :return:
+        """
+
+        def test_func(arg_1, arg_2, arg_3):
+            return arg_1, arg_2, arg_3
 
         args = get_args(test_func)
 
-        self.assertSequenceEqual(args, ["a", "b", "c"])
+        self.assertSequenceEqual(args, ["arg_1", "arg_2", "arg_3"])
 
 
 class TestMongoPipeline(TestCase):
+    """
+    Test MongoPipeline
+    """
+
     maxDiff = None
     mongo_settings = {
         "PIPELINE_MONGO_URI": "mongodb://127.0.0.1:27017",
@@ -65,6 +85,10 @@ class TestMongoPipeline(TestCase):
 
     @inlineCallbacks
     def test_create_indexes(self) -> None:
+        """
+
+        :return:
+        """
         _index_info = {
             "_id_": {
                 "key": SON([("_id", 1)]),
@@ -104,18 +128,30 @@ class TestMongoPipeline(TestCase):
 
     @inlineCallbacks
     def test_process_item(self):
+        """
+
+        :return:
+        """
         item = TestItem({"a": 0, "b": 1})
         result = yield self.pipe.process_item(item=item, spider=self.spider)
 
         self.assertDictEqual(dict(result), dict(item))
 
     def test_item_completed(self):
+        """
+
+        :return:
+        """
         _item = TestItem({"a": 2, "b": 3})
         item = self.pipe.item_completed(None, _item, None)
         self.assertDictEqual(dict(_item), dict(item))
 
     @inlineCallbacks
     def test_process_item_id(self):
+        """
+
+        :return:
+        """
         item = TestItem({"a": 4, "b": 5})
         result = yield self.pipe.process_item_id(
             signal=object(), sender=None, item=item, spider=self.spider
