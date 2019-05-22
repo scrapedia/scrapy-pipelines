@@ -134,6 +134,8 @@ class MongoPipeline(ItemPipeline):
             )
             yield self.create_indexes(spider=spider)
 
+        LOGGER.info('MongoPipeline is opened with "%s"', self.uri)
+
     @inlineCallbacks
     def close_spider(self, spider: Spider):
         """
@@ -142,6 +144,8 @@ class MongoPipeline(ItemPipeline):
         :return:
         """
         yield self.mongo.disconnect()
+
+        LOGGER.info('MongoPipeline is closed with "%s"', self.uri)
 
     @inlineCallbacks
     def create_indexes(self, spider: Spider):
