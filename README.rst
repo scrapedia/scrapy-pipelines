@@ -131,4 +131,7 @@ TODO
 * [X] Add item_completed method
 * [X] Add signals for MongoDB document's id return
 * [ ] Add MongoDB document update
+* [ ] Add Percona Server for MongoDB docker support
+* [ ] Add Redis support
 * [ ] Add InfluxDB support
+* [ ] Add LevelDB support
