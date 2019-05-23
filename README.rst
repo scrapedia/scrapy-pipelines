@@ -131,3 +131,4 @@ TODO
 * [X] Add item_completed method
 * [X] Add signals for MongoDB document's id return
 * [ ] Add MongoDB document update
+* [ ] Add InfluxDB support
