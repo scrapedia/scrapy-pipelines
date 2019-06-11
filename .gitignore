@@ -103,4 +103,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-/Pipfile.lock
+docker/MongoDB/mongo-db/
+docker/MongoDB/mongo-home/
+
+Pipfile.lock
