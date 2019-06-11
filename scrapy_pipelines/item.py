@@ -1,5 +1,4 @@
-from scrapy.item import Field
-from scrapy.item import Item
+from scrapy.item import Field, Item
 
 
 class BSONItem(Item):
