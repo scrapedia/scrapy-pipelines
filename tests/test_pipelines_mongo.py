@@ -14,7 +14,7 @@ from scrapy_pipelines.pipelines.mongo import MongoPipeline, get_args
 from scrapy_pipelines.settings import default_settings
 
 
-class TestItem(Item):
+class TempItem(Item):
     """
     A item class just for test purpose
     """
@@ -132,7 +132,7 @@ class TestMongoPipeline(TestCase):
 
         :return:
         """
-        item = TestItem({"a": 0, "b": 1})
+        item = TempItem({"a": 0, "b": 1})
         result = yield self.pipe.process_item(item=item, spider=self.spider)
 
         self.assertDictEqual(dict(result), dict(item))
@@ -142,7 +142,7 @@ class TestMongoPipeline(TestCase):
 
         :return:
         """
-        _item = TestItem({"a": 2, "b": 3})
+        _item = TempItem({"a": 2, "b": 3})
         item = self.pipe.item_completed(None, _item, None)
         self.assertDictEqual(dict(_item), dict(item))
 
@@ -152,7 +152,7 @@ class TestMongoPipeline(TestCase):
 
         :return:
         """
-        item = TestItem({"a": 4, "b": 5})
+        item = TempItem({"a": 4, "b": 5})
         result = yield self.pipe.process_item_id(
             signal=object(), sender=None, item=item, spider=self.spider
         )
