@@ -19,6 +19,12 @@ matrix:
   - dist: xenial
     env: TOXENV=py37
     python: 3.7
+  - env: TOXENV=docs
+    python: 3.6
+  - env: TOXENV=docs-coverage
+    python: 3.6
+  - env: TOXENV=docs-links
+    python: 3.6
 
 install:
 - pip install -U tox twine wheel codecov
