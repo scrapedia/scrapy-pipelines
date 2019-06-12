@@ -8,12 +8,16 @@ Scrapy Pipelines |version| documentation
    :maxdepth: 2
    :caption: Contents:
 
+   intro/installation
    pipelines/ItemPipeline
    pipelines/MongoDB
 
    items
    settings
    signals
+
+:doc:`intro/installation`
+    Installation
 
 :doc:`pipelines/ItemPipeline`
     The root class for all pipelines

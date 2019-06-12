@@ -1,0 +1,5 @@
+.. _intro-installation:
+
+============
+Installation
+============
