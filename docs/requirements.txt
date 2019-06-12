@@ -1,4 +1,4 @@
-pymongo
+pymongo==3.8.0
 scrapy
 sphinx==2.1.1
 txmongo==19.1.0
