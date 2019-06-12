@@ -1,32 +1,43 @@
 language: python
+
 services:
 - mongodb
+
 sudo: false
+
 branches:
   only:
   - master
   - "/^\\d\\.\\d+$/"
   - "/^\\d\\.\\d+\\.\\d+(rc\\d+|\\.dev\\d+)?$/"
+
 matrix:
   include:
-  - python: 3.6
-    env: TOXENV=py36
-  - python: 3.7
+  - env: TOXENV=py36
+    python: 3.6
+  - dist: xenial
     env: TOXENV=py37
-    dist: xenial
+    python: 3.7
+
 install:
 - pip install -U tox twine wheel codecov
+
 before_script:
 - mongo test_db --eval 'db.createUser({user:"test_username",pwd:"test_password",roles:["readWrite"]});'
+
 script: tox
+
 after_success:
 - codecov
+
 cache:
   directories:
   - "$HOME/.cache/pip"
+
 notifications:
   slack:
     secure: n6gYbtGfOf3AlRKvwSpAgH7t55oJn5FN8BBMiLUpzUz9lto1GBF2c4l2myLjrKK7HmHjJ3lqVIovKBWkx8DT4lygMb6/QvTOnpudQUNan9qk1O2p87wenlKAraE/UAeku+iBTbLdSqo2NoFWOtx7BKgPXDCZpbDJ69Bmj5w3q73ksgTYDkydQdyR0RsnL6Q0LoaFNOmgTphje8uk5u5fM+R2M3Yi3hJmGF69vi5qki8kRoBkah00N8VohNOZ2Sr78cxv09MxkNnDizOhAEGqmyWZQaa8GXTPZYtr8f7CS6KE2UYhgRULdGBDr1LT5LhpP1dY2FD8Wb138yYMQ3hclLvrFiJEpKc3WZ/wAvWnKD/dhfS/6W4soxf1biDiNZSp0ROdqV2vJsqqM4XxSZrL8TzZCu2hyIDPw9DlVMpFW4v88c1F6wa7Ug1MDiVHPgK0d044ccRGFg5KXnsS6TpajmLsNZmxxSZvy3n1dla3heaP1oEb0n+TWl+cctrfh7Rw4iNJF/i5DkSabn14IQ8b4NYd2xWIeQoEtqjyZPXHEGRbz7xJ44f0AUo00ptugRr5/BuKTyxKtwvsE6HEx+3w2HTJ8q6h6xc71Dyih67Ga6n9X7gcUY6UEqCdlAkvjCFIro4jqScTbDadLXvN7aiaev/9lmcfSkM2GBYuVhlyhlw=
+
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
@@ -35,5 +46,6 @@ deploy:
     secure: Cic+TcpBqYRKXz/GVXA3EaCIu0uy+OXu8Jqi0EdGLDBB+2iUvKEjpSvMT8z2LZH6xZMwI6YwZRSGFdgdZFGF/Y/FxL8FFePCi5jqre9iiwGMIoJLCzLzONHkiz0IBsKtU3uJDtKBU1/NG7Nl7R2kT2HK97vKzt8q6VJpNdPkZLNeT2rpa4Fd9czfaxZ8GEHZ/rxYAVN8eltOGkbD2lh5+cfGxU1EvPJLnMLXGCIefw/+uS5+bt5urGKwF68PoeUEEdu9CcaH5bfo8XsOWqPxBcpyrf7UAufzYVOdTdr2FrBnxj1Xl2sz3ENXw7eRwoh5EoC30QaC3O06NgIm3P38IFSzNxhIvtNrFxCMWI49Wttljx9IuTwscDa1Jg/JlPb1QOHycBtrRgqSHR5MDzBmWdJB4w68S6Igq5rlQT4f0urrrVdLVuJqfkt6I2A22KJOl7rCLXN6Yn2ida4pZk/QBVlHaCEy3YfVx9yIcUjCVcq0DVzETll94zWH0JVRMRv5jEJvoscYNlex/ra/dSoEff3lpqjUH6J94R14FkjrZU+kC+h9vZkqcK8MUZSaDxghiKxOm57ons0gro7KIDHx1KZulQp2QUBUDpSZD0EdOGf6CGGauecf3cMza1WORMJjjeCrkCZA1LsbKnngcSItOUL43+8va/AEPSB4XImQFzU=
   on:
     branch: master
-    repo: scrapedia/scrapy-pipelines
     condition: "$TOXENV == py36"
+    repo: scrapedia/scrapy-pipelines
+    tags: true
