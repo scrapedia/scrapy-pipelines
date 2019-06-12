@@ -8,7 +8,7 @@ sudo: false
 branches:
   only:
   - master
-  - "^v\d+\.\d+$"
+  - "/^v\\d+\\.\\d+$/"
   - "/^\\d\\.\\d+$/"
   - "/^\\d\\.\\d+\\.\\d+(rc\\d+|\\.dev\\d+)?$/"
 
