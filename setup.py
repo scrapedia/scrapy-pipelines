@@ -19,7 +19,7 @@ setup(
     maintainer="Scrapedia",
     maintainer_email="Scrapedia@outlook.com",
     license="GPLv3",
-    package=find_packages(exclude=("tests", "tests.*")),
+    packages=find_packages(exclude=("tests", "tests.*")),
     include_package_data=True,
     zip_safe=False,
     classifiers=[
@@ -35,6 +35,6 @@ setup(
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    install_requires=["txmongo", "scrapy"],
+    install_requires=["scrapy", "txmongo"],
     extras_require=extras_require,
 )
