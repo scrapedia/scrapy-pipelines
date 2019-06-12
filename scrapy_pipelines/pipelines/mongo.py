@@ -1,5 +1,5 @@
 """
-MongoDB Async Item Pipeline
+MongoDB Async Item Pipeline with txmongo
 """
 import inspect
 import logging
@@ -44,7 +44,7 @@ class MongoPipeline(ItemPipeline):
         """
 
         :param uri:
-        :type uri:
+        :type uri: str
         :param settings:
         :type settings:
         """
@@ -58,6 +58,13 @@ class MongoPipeline(ItemPipeline):
 
     @classmethod
     def from_crawler(cls, crawler: Crawler):
+        """
+
+        :param crawler:
+        :type crawler: Crawler
+        :return:
+        :rtype: MongoPipeline
+        """
         pipe = super().from_crawler(crawler=crawler)
         crawler.signals.connect(receiver=pipe.process_item_id, signal=item_id)
         return pipe
@@ -67,9 +74,9 @@ class MongoPipeline(ItemPipeline):
         """
 
         :param settings:
-        :type settings:
+        :type settings: Settings
         :return:
-        :rtype
+        :rtype: MongoPipeline
         """
         uri = settings["PIPELINE_MONGO_URI"]
         return cls(uri=uri, settings=settings)
@@ -78,7 +85,9 @@ class MongoPipeline(ItemPipeline):
         """
 
         :param func:
+        :type func: Callable
         :return:
+        :rtype: Dict[str, str]
         """
         func_args = dict()
         for arg in get_args(func):
@@ -93,6 +102,7 @@ class MongoPipeline(ItemPipeline):
         :param callable_:
         :param kwargs:
         :return:
+        :rtype:
         """
         args = self._get_args_from_settings(func=callable_)
         args.update(kwargs)
@@ -103,7 +113,9 @@ class MongoPipeline(ItemPipeline):
         """
 
         :param spider:
+        :type spider: Spider
         :return:
+        :rtype:
         """
         self.mongo = yield self._get_callable(ConnectionPool)
         self.database = yield self._get_callable(
@@ -141,7 +153,9 @@ class MongoPipeline(ItemPipeline):
         """
 
         :param spider:
+        :type spider: Spider
         :return:
+        :rtype:
         """
         yield self.mongo.disconnect()
 
@@ -152,7 +166,7 @@ class MongoPipeline(ItemPipeline):
         """
 
         :param spider:
-        :type spider:
+        :type spider: Spider
         :return:
         :rtype:
         """
@@ -170,8 +184,11 @@ class MongoPipeline(ItemPipeline):
         """
 
         :param item:
+        :type item: Item
         :param spider:
+        :type spider: Spider
         :return:
+        :rtype: Item
         """
         result = yield self.collection.insert_one(document=dict(item))
 
@@ -183,9 +200,13 @@ class MongoPipeline(ItemPipeline):
         """
 
         :param result:
+        :type result: str
         :param item:
+        :type item: Item
         :param spider:
+        :type spider: Spider
         :return:
+        :rtype: Item
         """
         return item
 
@@ -196,8 +217,11 @@ class MongoPipeline(ItemPipeline):
         """
 
         :param item:
+        :type item: Item
         :param spider:
+        :type spider: Spider
         :return:
+        :rtype: InsertOneResult
         """
         result = yield self.collection.insert_one(document=dict(item))
 
