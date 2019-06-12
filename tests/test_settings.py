@@ -1,12 +1,11 @@
 """
 test the functions in settings
 """
-import logging
 from unittest import TestCase
 
 from scrapy.settings import Settings
 
-from scrapy_pipelines.settings import LOGGER, unfreeze_settings
+from scrapy_pipelines.settings import unfreeze_settings
 
 
 class TestSettings(TestCase):
@@ -24,7 +23,7 @@ class TestSettings(TestCase):
         :return:
         """
         self.assertEqual(self.settings.frozen, True)
-        with unfreeze_settings(self.settings) as settings:
+        with unfreeze_settings(self.settings):
             self.assertEqual(self.settings.frozen, False)
         self.assertEqual(self.settings.frozen, True)
 
@@ -33,8 +32,6 @@ class TestSettings(TestCase):
 
         :return:
         """
-        with self.assertRaises(Exception), self.assertLogs(
-                logger=LOGGER, level=logging.ERROR
-        ):
-            with unfreeze_settings(self.settings) as settings:
+        with self.assertRaises(Exception):
+            with unfreeze_settings(self.settings):
                 raise Exception
