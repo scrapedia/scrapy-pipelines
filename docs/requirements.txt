@@ -1,2 +1,2 @@
-scrapy
+scrapy==1.6.0
 sphinx==2.1.1
