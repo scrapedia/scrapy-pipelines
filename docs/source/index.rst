@@ -1,16 +1,34 @@
-.. Scrapy Pipelines documentation master file, created by
-   sphinx-quickstart on Thu May  9 23:23:55 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. _topics-index:
 
-Welcome to Scrapy Pipelines's documentation!
-============================================
+Scrapy Pipelines |version| documentation
+========================================
 
 .. toctree::
+   :hidden:
    :maxdepth: 2
    :caption: Contents:
 
+   pipelines/ItemPipeline
+   pipelines/MongoDB
 
+   items
+   settings
+   signals
+
+:doc:`pipelines/ItemPipeline`
+    The root class for all pipelines
+
+:doc:`pipelines/MongoDB`
+    Save items into MongoDB
+
+:doc:`items`
+    Items used in these pipelines
+
+:doc:`settings`
+    Settings for these pipelines
+
+:doc:`signals`
+    Signals used in these pipelines
 
 Indices and tables
 ==================
