@@ -1,3 +1,3 @@
-pymongo
+pymongo==3.8.0
 scrapy
 sphinx==2.1.1
