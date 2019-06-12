@@ -23,7 +23,7 @@ from scrapy_pipelines.signals import item_id
 LOGGER = logging.getLogger(__name__)
 
 
-def get_args(func: Callable) -> Tuple[str]:
+def get_args(func: Callable) -> Tuple[str, ...]:
     """
 
     :param func:
@@ -31,7 +31,7 @@ def get_args(func: Callable) -> Tuple[str]:
     :return:
     :rtype: tuple
     """
-    sig = inspect.signature(obj=func)
+    sig = inspect.signature(func)
     return tuple(sig.parameters.keys())
 
 
