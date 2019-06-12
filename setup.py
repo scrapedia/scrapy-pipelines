@@ -7,13 +7,16 @@ import versioneer
 
 extras_require = {}
 
+with open("README.rst", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name="Scrapy-Pipelines",
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     url="https://github.com/scrapedia/scrapy-pipelines",
     description="A collection of scrapy item pipelines",
-    long_description=open("README.rst").read(),
+    long_description=long_description,
     author="Scrapedia",
     author_email="Scrapedia@outlook.com",
     maintainer="Scrapedia",
