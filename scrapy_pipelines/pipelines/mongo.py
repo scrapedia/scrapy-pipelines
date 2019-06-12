@@ -196,7 +196,7 @@ class MongoPipeline(ItemPipeline):
 
         return _item
 
-    def item_completed(self, result, item: Item, spider: Spider) -> Item:
+    def item_completed(self, result: str, item: Item, spider: Spider) -> Item:
         """
 
         :param result:
@@ -212,10 +212,14 @@ class MongoPipeline(ItemPipeline):
 
     @inlineCallbacks
     def process_item_id(
-            self, signal, sender, item: Item, spider: Spider
+            self, signal: object, sender: Crawler, item: Item, spider: Spider
     ) -> InsertOneResult:
         """
 
+        :param signal:
+        :type signal: object
+        :param sender:
+        :type sender: Crawler
         :param item:
         :type item: Item
         :param spider:

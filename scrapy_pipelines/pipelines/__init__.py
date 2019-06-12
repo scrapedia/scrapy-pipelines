@@ -25,6 +25,7 @@ class ItemPipeline(ABC):
         """
 
         :param settings:
+        :type settings: Settings
         """
         self.settings = settings
         self.crawler: Crawler = None
@@ -34,7 +35,9 @@ class ItemPipeline(ABC):
         """
 
         :param crawler:
+        :type crawler: Crawler
         :return:
+        :rtype:
         """
         with unfreeze_settings(crawler.settings) as settings:
             settings.setmodule(
@@ -53,7 +56,9 @@ class ItemPipeline(ABC):
         """
 
         :param settings:
+        :type settings: Settings
         :return:
+        :rtype:
         """
         return cls(settings=settings)
 
@@ -62,7 +67,9 @@ class ItemPipeline(ABC):
         """
 
         :param spider:
+        :type spider: Spider
         :return:
+        :rtype:
         """
 
     @abstractmethod
@@ -70,14 +77,19 @@ class ItemPipeline(ABC):
         """
 
         :param spider:
+        :type spider: Spider
         :return:
+        :rtype:
         """
 
     @abstractmethod
-    def process_item(self, item: Item, spider: Spider):
+    def process_item(self, item: Item, spider: Spider) -> Item:
         """
 
         :param item:
+        :type item: Item
         :param spider:
+        :type spider: Spider
         :return:
+        :rtype: Item
         """
