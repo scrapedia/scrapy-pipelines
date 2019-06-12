@@ -1,3 +1,4 @@
 pymongo
 scrapy
 sphinx==2.1.1
+txmongo
