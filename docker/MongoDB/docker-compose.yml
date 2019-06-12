@@ -13,7 +13,6 @@ services:
     restart: always
     tty: true
     volumes:
-      - ./mongo-home:/home/mongodb
       - ./mongo-db:/data/db
       - ./mongo-initdb.d:/docker-entrypoint-initdb.d
   # https://hub.docker.com/_/mongo-express/
