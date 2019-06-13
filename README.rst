@@ -1,3 +1,9 @@
+Readmore:
+
+`noffle/art-of-readme: Learn the art of writing quality READMEs.`_
+
+.. _`noffle/art-of-readme: Learn the art of writing quality READMEs.`: https://github.com/noffle/art-of-readme
+
 ================
 Scrapy-Pipelines
 ================
