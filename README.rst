@@ -49,6 +49,9 @@ Overview
 These pipelines enable Scrapy to save items into various backends, including:
 
 * MongoDB
+* Redis (todo)
+* InfluxDB (todo)
+* LevelDB (todo)
 
 And also these pipelines provide multiple ways to save or update the items, and
 return id created by backends
