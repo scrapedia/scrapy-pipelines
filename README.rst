@@ -46,7 +46,9 @@ Overview
     :target: https://www.gnu.org/licenses/gpl-3.0
     :alt: License: AGPL v3
     
-These pipelines enable Scrapy to save items into various backends, including:
+Since Scrapy doesn't provide enough pipelines examples for different backends
+or databases, this repository provides severals to demostrate the
+decent usages, including:
 
 * MongoDB
 * Redis (todo)
