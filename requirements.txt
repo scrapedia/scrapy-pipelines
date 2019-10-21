@@ -1,2 +1,2 @@
 txmongo==19.1.0
-scrapy==1.7.3
+scrapy==1.7.4
