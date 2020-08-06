@@ -129,10 +129,14 @@ class MongoPipeline(ItemPipeline):
                     self.settings.get("PIPELINE_MONGO_PASSWORD"),
                 )
         ):
+
+            if self.settings.get("PIPELINE_MONGO_AUTH_SOURCE"):
+                database = self.settings.get("PIPELINE_MONGO_AUTH_SOURCE")
+            else:
+                database = self.settings.get("PIPELINE_MONGO_DATABASE")
             yield self._get_callable(
-                self.database.authenticate,
-                name=self.settings.get("PIPELINE_MONGO_USERNAME"),
-            )
+                self.mongo.authenticate,
+                database=database)
         try:
             yield self.database.collection_names()
         except OperationFailure as err:
