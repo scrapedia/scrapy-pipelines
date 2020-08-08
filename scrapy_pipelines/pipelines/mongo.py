@@ -134,7 +134,7 @@ class MongoPipeline(ItemPipeline):
                 name=self.settings.get("PIPELINE_MONGO_USERNAME"),
             )
         try:
-            yield self.database.collection_names()
+            yield self.database.command("listCollections")
         except OperationFailure as err:
             LOGGER.error(str(err))
             self.crawler.engine.close_spider(spider=spider, reason=str(err))
