@@ -1,4 +1,4 @@
 pymongo==3.11.3
-scrapy==2.4.1
+scrapy==2.6.2
 sphinx==3.5.2
 txmongo==19.2.0
