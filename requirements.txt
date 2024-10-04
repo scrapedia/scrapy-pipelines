@@ -1,2 +1,2 @@
-txmongo==19.2.0
+txmongo==24.0.0
 scrapy==2.4.1
